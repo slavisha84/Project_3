@@ -1,0 +1,184 @@
+	
+	/* background 1 style */
+	
+	background-image:url(../images/patterns/bg_t_12.png);
+	background-attachment:fixed;
+	background-color:#000;
+	
+	
+	/* background 2 styles  */
+	
+	background-image:url(../images/patterns/bg_i_1.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+	
+	
+	/* background 3 styles */  
+	
+	background-image:url(../images/patterns/bg_i_2.jpg);
+	background-attachment:fixed;
+	background-color:#000;
+	
+	
+	/* background 4 styles */
+	
+	background-image:url(../images/patterns/bg_i_3.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+	
+	
+	/* background 5 styles */  
+	
+	background-image:url(../images/patterns/bg_i_4.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+
+	
+	/* background 6 styles  */
+	
+	background-image:url(../images/patterns/bg_i_5.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+	
+	
+	/* background 7 styles */  
+	
+	background-image:url(../images/patterns/bg_i_6.jpg);
+	background-attachment:fixed;
+	background-color:#000;
+	
+	
+	/* background 8 styles */
+	
+	background-image:url(../images/patterns/bg_i_7.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+	
+	
+	/* background 9 styles */  
+	
+	background-image:url(../images/patterns/bg_i_8.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+
+
+	
+	/* background 10 styles  */
+	
+	background-image:url(../images/patterns/bg_i_9.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+	
+	
+	/* background 11 styles */  
+	
+	background-image:url(../images/patterns/bg_i_10.jpg);
+	background-attachment:fixed;
+	background-color:#000;
+	
+	
+	/* background 12 styles */
+	
+	background-image:url(../images/patterns/bg_i_11.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+	
+	
+	/* background 13 styles */  
+	
+	background-image:url(../images/patterns/bg_i_12.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+
+	
+	/* background 14 styles  */
+	
+	background-image:url(../images/patterns/bg_i_13.jpg);
+	background-attachment:fixed;
+	background-color:#000; 
+	
+	
+	/* background 15 styles */  
+	
+	background-image:url(../images/patterns/bg_t_1.png);
+	background-attachment:repeat;
+	background-color:#000;
+	
+	
+	/* background 16 styles */
+	
+	background-image:url(../images/patterns/bg_t_2.png);
+	background-attachment:repeat;
+	background-color:#000;
+	
+	
+	/* background 17 styles */  
+	
+	background-image:url(../images/patterns/bg_t_3.png);
+	background-attachment:repeat;
+	background-color:#000;
+
+
+	/* background 18 styles */  
+	
+	background-image:url(../images/patterns/bg_t_4.png);
+	background-attachment:repeat;
+	background-color:#000;
+	
+	
+	/* background 19 styles */
+	
+	background-image:url(../images/patterns/bg_t_5.png);
+	background-attachment:repeat;
+	background-color:#000;
+	
+	
+	/* background 20 styles */  
+	
+	background-image:url(../images/patterns/bg_t_6.png);
+	background-attachment:repeat;
+	background-color:#000;
+
+	/* background 21 styles */  
+	
+	background-image:url(../images/patterns/bg_t_7.png);
+	background-attachment:repeat;
+	background-color:#000;
+	
+	
+	/* background 22 styles */
+	
+	background-image:url(../images/patterns/bg_t_8.png);
+	background-attachment:repeat;
+	background-color:#000;
+	
+	
+	/* background 23 styles */  
+	
+	background-image:url(../images/patterns/bg_t_9.png);
+	background-attachment:repeat;
+	background-color:#000;
+
+
+	/* background 24 styles */  
+	
+	background-image:url(../images/patterns/bg_t_10.png);
+	background-attachment:repeat;
+	background-color:#000;
+	
+	
+	/* background 25 styles */
+	
+	background-image:url(../images/patterns/bg_t_11.png);
+	background-attachment:repeat;
+	background-color:#000;
+
+	
+	/* only background color styles  */ 
+	
+	background-image:none !important;
+	background-color:#000 !important;
+
+
+
+

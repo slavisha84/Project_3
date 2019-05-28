@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta http-equiv="content-type" content="text/html;charset=utf-8" />
+	<link rel="shortcut icon" href="images/favicon.ico" />
+
+	<link rel="stylesheet" type="text/css" href="stylesheets/style.css" />
+    
+    <!--[if IE 7]>
+		<script src="http://ie7-js.googlecode.com/svn/version/2.1(beta4)/IE8.js"></script>
+	<![endif]-->  
+  
+	<title>Horizon | Circle Effect Slider</title>
+    
+	<!-- Initialise jQuery Library -->
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+	
+	<script id="barTmpl" type="text/x-jquery-tmpl">
+	  <div class="cn-bar">
+		  <div class="cn-nav">
+			  <a href="#" class="cn-nav-prev">
+				  <span>Previous</span>
+				  <div style="background-image:url(${prevSource});"></div> 
+			  </a>
+			  <a href="#" class="cn-nav-next">
+				  <span>Next</span>
+				  <div style="background-image:url(${nextSource});"></div>
+			  </a>
+		  </div><!-- cn-nav -->
+		  <div class="cn-nav-content">
+			  <div class="cn-nav-content-prev">
+				  <strong>Previous</strong>
+				  <h3>${prevTitle}</h3>
+			  </div>
+			  <div class="cn-nav-content-current">
+				  <span>Currently viewing</span>
+				  <h2>${currentTitle}</h2>
+			  </div>
+			  <div class="cn-nav-content-next">
+				  <strong>Next</strong>
+				  <h3>${nextTitle}</h3>
+			  </div>
+		  </div><!-- cn-nav-content -->
+	  </div><!-- cn-bar -->
+	</script>
+</head>
+<body>
+<div id="wrapper">
+    <div id="header">
+		<div class="nav-menu">
+			<div class="left_rig"></div>
+			<div class="right_rig"></div>
+			<ul class="sf-menu">
+				<li class="current-menu-item"><a href="index.html">Home</a>
+					<ul>
+						<li><a href="index.html">Nivo Slider</a></li>
+						<li><a href="index-4.html">Circle Effect Slider</a></li>
+						<li><a href="index-2.html">Elegant Accordion</a></li>
+						<li><a href="index-5.html">Rama Slider</a></li>
+						<li><a href="index-3.html">Mosaic</a></li>
+					</ul>
+                </li>
+				<li><a href="about_us.html">Pages</a>
+					<ul>
+						<li><a href="about_us.html">About Us</a></li>            
+						<li><a href="services.html">Services</a></li>  
+						<li><a href="#">Dropdowns</a>
+							<ul>
+								<li><a href="#">Sample Dropdown 1</a></li>
+								<li><a href="#">Sample Dropdown 2</a></li>
+								<li><a href="#">Sample Dropdown 3</a></li>
+							</ul>
+						</li>
+						<li><a href="404page.html">404 Page</a></li>         
+					</ul>
+				</li>
+				<li><a href="headings.html">Features</a>
+					<ul>
+						<li><a href="headings.html">Headings</a></li>
+						<li><a href="images-and-floats.html">Images and floats</a></li>
+						<li><a href="pricing_tables.html">Pricing Tables</a></li>
+						<li><a href="typography.html">Typography</a></li>
+						<li><a href="toggle.html">FAQ Toggle</a></li>
+						<li><a href="tables.html">Tables</a></li>
+						<li><a href="buttons.html">Buttons</a></li>
+						<li><a href="columns.html">Column Layout</a></li>
+						<li><a href="blog.html">Right Sidebar Page</a></li>
+						<li><a href="sidebar_left.html">Left Sidebar Page</a></li>
+						<li><a href="full_width.html">Full Width</a></li>   
+						<li><a href="tabs.html">Tabs</a></li>             
+					</ul>
+				</li>          
+				<li><a href="gallery.html">Gallery</a></li>
+				<li><a href="portfolio_1col.html">Portfolio</a>
+					<ul>
+						<li><a href="portfolio_1col.html">Portfolio 1 Column</a></li>
+						<li><a href="portfolio_2col.html">Portfolio 2 Columns</a></li>
+						<li><a href="portfolio_3col.html">Portfolio 3 Columns</a></li>
+						<li><a href="portfolio_4col.html">Portfolio 4 Columns</a></li>
+						<li><a href="portfolio_single.html">Portfolio Single Page</a></li>
+					</ul>
+				</li>
+				<li><a href="blog.html">Blog</a>
+					<ul>
+						<li><a href="blog.html">Blog Page</a></li>
+						<li><a href="alternate_blog.html">Alternate Blog Page</a></li>
+						<li><a href="blog_single.html">Blog Single Page</a></li>
+					</ul>
+				</li>
+				<li><a href="contact.html">Contact</a></li>
+			</ul>
+
+			<div class="clear"></div>
+
+			<div id="fancy_search"><a id="search_tooltip_trigger" href="#">Search</a></div>
+			<div class="search_tooltip">
+				<div class="cluetip-inner">
+					<form method="get" action="#">
+						<p><input type="text" size="20" class="tooltip_search_field" name="s" id="search_input" value="-Search-" /></p>
+						<p><input type="submit" value="Search" class="tooltip_search_button" /></p>
+					</form>
+				</div><!--/ cluetip-inner--> 
+			</div>
+		</div><!--/ nav-menu-->
+
+		<div class="clear"></div> 
+
+		<div class="logo">
+			<a href="index.html">Horizon</a>
+		</div><!--/ logo-->
+
+		<div class="info_call">
+			<p>For additional information call: <span>+00 123456789</span></p>
+		</div><!--/ info_call-->
+
+		<div class="clear"></div>
+	</div><!--/ header-->			
+	
+    <!-- Begin Slider -->
+    <div id="slider" >
+        <div id="cn-slideshow" class="cn-slideshow pic_slide">
+            <div class="cn-images">
+                <img src="images/sliders/large/1.jpg" alt="image01" title="Image Title 1" data-thumb="images/sliders/thumbs/1.jpg" style="display:block;"/>
+                <img src="images/sliders/large/2.jpg" alt="image02" title="Image Title 2" data-thumb="images/sliders/thumbs/2.jpg"/>
+                <img src="images/sliders/large/3.jpg" alt="image03" title="Image Title 3" data-thumb="images/sliders/thumbs/3.jpg"/>
+                <img src="images/sliders/large/4.jpg" alt="image04" title="Image Title 4" data-thumb="images/sliders/thumbs/4.jpg"/>
+                <img src="images/sliders/large/5.jpg" alt="image05" title="Image Title 5" data-thumb="images/sliders/thumbs/5.jpg"/>
+                <img src="images/sliders/large/6.jpg" alt="image06" title="Image Title 6" data-thumb="images/sliders/thumbs/6.jpg"/>
+            </div><!-- cn-images -->
+        </div><!-- cn-slideshow -->
+	</div><!--/ slider-->   
+	<!-- End Slider -->
+    	
+	<div class="welcome-bar">
+		<div class="bar-top">
+			<div class="bar-title">
+				<h3>Horizon is a Professional and Effective Solution to Create Really Beautiful Website With a Lot of Possibilities!</h3>
+			</div><!--/ bar-titlte-->
+			<div class="bar-button">
+				<a href="#" class="button dark medium">Learn More</a>
+			</div><!--/ bar-button-->
+			<div class="clear"></div>
+		</div><!--/bar-top-->	
+	</div><!--/ welcome-bar-->
+    
+	<div class="content_wrapper_sbr">
+		<div id="content">
+			
+            <h2>Why Choose Us?</h2>
+			
+            <p>Consecetur adipiscing elit. Donec nunc ipsum, loboris non convallis laoret amet enim. Aliquam hendrerit  
+			rutrum iaculis. Aliquam vitae odio elit. Nullam sed nisi ac arcu condimentum varius. Etiam malesuada velit 
+			bibendum luctus. Donec sit amet orci augue, sed tristique eros. Nam ut dui sit amet risus mollis malesuada 
+			quis quis nulla. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia.</p>
+			
+            <div class="divider_content"></div>
+			
+            <div class="columns">
+				<div class="column">
+					<img class="borderwidth" src="images/icons/middle/icon_1.png" width="48" height="48" alt="">
+					<h5>Clean Code</h5>
+					<p>Consecetur adipiscing loboris non convallis laoret amet enim. Aliquam hendrerit  utrum.</p>	
+				</div>
+				<div class="column">
+					<img class="borderwidth" src="images/icons/middle/icon_2.png" width="48" height="48" alt="">
+					<h5>Documentation</h5>
+					<p>Proin placerat vestibum dapus. Integer adipiscing, dolor fringilla commodo, vehicula.</p>	
+				</div>
+				<div class="column">
+					<img class="borderwidth" src="images/icons/middle/icon_3.png" width="48" height="48" alt="">
+					<h5>Ongoing Support</h5>
+					<p>Vehicula ipsum, ac sollicitudin nulla facilisi. Pellentesque bibendum mauris.</p>	
+				</div>
+                <div class="clear"></div>
+			</div>
+			
+            <div class="columns2">
+				<div class="column">
+					<img class="borderwidth" src="images/icons/middle/icon_4.png"  width="48"  height="48" alt="">
+					<h5>Compatibility</h5>
+					<p>Vehicula ipsum, ac sollicitudin nulla facilisi. Pellentesque bibendum mauris.</p>	
+				</div>
+				<div class="column">
+					<img class="borderwidth" src="images/icons/middle/icon_5.png" width="48"  height="48" alt="">
+					<h5>Best Services</h5>
+					<p>Vehicula ipsum, ac sollicitudin nulla facilisi. Pellentesque bibendum mauris.</p>	
+				</div>
+				<div class="column"> 
+					<img class="borderwidth" src="images/icons/middle/icon_6.png" width="48" height="48" alt="">
+					<h5>Contact Form</h5>
+					<p>Vehicula ipsum, ac sollicitudin nulla facilisi. Pellentesque bibendum mauris.</p>	
+				</div>
+                <div class="clear"></div> 
+            </div> 
+			<div class="clear"></div>
+            
+		</div><!--/ content-->
+		    	
+		<div id="sidebar">
+			<div class="widget-container widget_testimonials">
+				<ul>
+					<li>
+						<div class="quote-text">“Great theme, love the design… thanks for making my life easier!”</div>
+						<div class="quote-author">-Brandon Green-</div>
+					</li>
+					<li>
+						<div class="quote-text">“This has to be the best template:D You’ve made my day, and my clients’ website!”</div>
+						<div class="quote-author">-Chris Mayer-</div>
+					</li>
+				</ul>
+				<div class="clear"></div>
+			</div><!--/ widget_testimonials-->
+			
+			<div class="widget-container widget_latest_posts">
+				<h3>Latest News</h3>
+				<ul>
+					<li>
+						<p><a class="link" href="#">Consecetur adipiscing elit. Donec nunc ipsum, loboris non convallis.</a></p>
+						<span class="date">Posted on Nov 27, 2011</span>
+					</li>
+					<li>
+						<p><a class="link" href="#">Curabitur odio suscipit condimentum porttitor ut, egestas.</a></p>
+						<span class="date">Posted on Nov 25, 2011</span>
+					</li>
+					<li>
+						<p><a class="link" href="#">Donec augue ligula, laoreet ornare nec, molestie vitae bibendum.</a></p>
+						<span class="date">Posted on Nov 20, 2011</span>
+					</li>
+				</ul>
+				<a href="#" class="button default small">All News</a>
+			</div><!--/ widget_recent_posts-->	
+			
+			<div class="widget-container widget_text">
+				<h3>About the Theme</h3>        
+				<p>Consecetur adipiscing elit. Donec nunc ipsum, loboris non convallis laoret enim. Aliquam vitae odio elit.</p>
+			</div><!--/ widget_text-->
+		</div><!--/ sidebar-->
+		<div class="clear"></div>
+    </div><!--/ content_wrapper-->	
+</div><!--/ wrapper-->   
+    
+<div class="twitter_widget">
+	<p><a href="#">Get our latest HTML template - Horizon Corporate Business Template with a lot of possibilities</a></p>
+</div><!--/ twitter_widget-->
+  
+<!-- Start Footer Sidebar -->
+<div id="footer_full">
+	<div id="fsb">
+		<!-- Start First Column -->
+		<div class="widget-container widget_text" data-place="1.7">
+			<h3>Contact Info</h3>
+			<address>Phone:  +00 123456789<br/>
+			E-mail: yoursite@yoursite.com</address>
+			<p class="copyright">Copyright @ 2011 &bull; <a class="link" target="_blank" href="http://webtemplatemasters.com">ThemeMakers</a><br> All rights reserved</p>
+		</div>
+		<!-- Start Second Column -->
+		<div class="widget-container widget_nav_menu" data-place="1.1">
+			<h3>Quick Menu</h3>
+			<ul>
+				<li><a href="about_us.html">About Us</a></li>
+				<li><a href="services.html">Services</a></li>
+				<li><a href="blog.html">Blog</a></li>
+				<li><a href="pricing_tables.html">Features</a></li>
+				<li><a href="portfolio_4col.html">Portfolio</a></li>
+			</ul>
+		</div>
+		<!-- Start Third Column -->
+		<div class="widget-container widget_text" data-place="2">
+			<h3>Stay Connected</h3>
+			<ul class="social_list">
+				<li><a class="fb" href="#" title="Facebook"></a></li>
+				<li><a class="tw" href="#" title="Twitter"></a></li>
+				<li><a class="fl" href="#" title="Flickr"></a></li>
+				<li><a class="rss" href="#" title="RSS Feed"></a></li>
+				<li><a class="sp" href="#" title="Skype"></a></li>
+			</ul><!--/ social_list-->
+		</div>
+		<!-- Start Fourth Column -->
+		<div class="widget-container widget_text" data-place="2">
+			<h3>Email Updates</h3>
+			<p>Information about current events related <br> to our company</p>
+			 <form class="email_updates" action="#">
+				<input type="text" name="email"  value="-enter your e-mail-"  id="email">
+				<input type="submit" class="submit" value="Submit">
+			</form>
+		</div>
+		<div class="clear"></div>
+	</div><!--/ fsb-->
+</div><!--/ footer_full-->
+<!-- End Footer Sidebar -->
+<script type="text/javascript" src="js/general.js"></script>
+</body>
+</html>
