@@ -20,14 +20,26 @@ def index():
     Outdoor_df = pd.read_sql_query("SELECT * FROM BME_DATA ORDER BY TIME_STAMP DESC LIMIT 1", Ocnx)
     Indoor_df = pd.read_sql_query("SELECT * FROM BME_DATA  ORDER BY TIME_STAMP DESC LIMIT 1", Icnx)
 
-    # Convert time into datetime
+    # Cleaning up Outdoor Data
     Outdoor_df['TIME_STAMP'] = pd.to_datetime(Outdoor_df['TIME_STAMP'])
-    Indoor_df['TIME_STAMP'] = pd.to_datetime(Indoor_df['TIME_STAMP'])
     Outdoor_df['TIME_STAMP'] = Outdoor_df['TIME_STAMP'].dt.round('60min')
-    Indoor_df['TIME_STAMP'] = Indoor_df['TIME_STAMP'].dt.round('60min')
-
-    # converting temperature from C to f
+    Outdoor_df = Outdoor_df.groupby(['TIME_STAMP'], as_index=False)["TEMPERATURE","GAS","HUMIDITY", "PRESSURE", "ALTITUDE"].mean()
+    Outdoor_df = Outdoor_df.loc[:,["TIME_STAMP", "TEMPERATURE", "GAS", "HUMIDITY", "PRESSURE"]]
+    Outdoor_df["GAS"] = round(Outdoor_df["GAS"],1)
+    Outdoor_df["HUMIDITY"] = round(Outdoor_df["HUMIDITY"],1)
+    Outdoor_df["TEMPERATURE"] = round(Outdoor_df["TEMPERATURE"],1)
+    Outdoor_df["PRESSURE"] = round(Outdoor_df["PRESSURE"],1)
     Outdoor_df['TEMPERATURE'] = round((Outdoor_df['TEMPERATURE']* 9/5) + 32)
+
+    # Cleaning up Indoor Data
+    Indoor_df['TIME_STAMP'] = pd.to_datetime(Indoor_df['TIME_STAMP'])
+    Indoor_df['TIME_STAMP'] = Indoor_df['TIME_STAMP'].dt.round('60min')
+    Indoor_df = Indoor_df.groupby(['TIME_STAMP'], as_index=False)["TEMPERATURE","GAS","HUMIDITY", "PRESSURE", "ALTITUDE"].mean()
+    Indoor_df = Indoor_df.loc[:,["TIME_STAMP", "TEMPERATURE", "GAS", "HUMIDITY", "PRESSURE"]]
+    Indoor_df["GAS"] = round(Indoor_df["GAS"],1)
+    Indoor_df["HUMIDITY"] = round(Outdoor_df["HUMIDITY"],1)
+    Indoor_df["TEMPERATURE"] = round(Indoor_df["TEMPERATURE"],1)
+    Indoor_df["PRESSURE"] = round(Indoor_df["PRESSURE"],1)
     Indoor_df['TEMPERATURE'] = round((Indoor_df['TEMPERATURE']* 9/5) + 32)
 
     # Merging Indor and Outdoor (on time stamp)
@@ -39,39 +51,40 @@ def index():
 
 @app.route("/analysis")
 def analysis():
-    # Create your connections with indoor and outdoor databases
     Outdoor_df = pd.read_sql_query("SELECT * FROM BME_DATA", Ocnx)
     Indoor_df = pd.read_sql_query("SELECT * FROM BME_DATA", Icnx)
 
-    # Convert time into datetime
+    # Cleaning up Outdoor Data
     Outdoor_df['TIME_STAMP'] = pd.to_datetime(Outdoor_df['TIME_STAMP'])
-    Indoor_df['TIME_STAMP'] = pd.to_datetime(Indoor_df['TIME_STAMP'])
-
-    # Rounding to 60 min
     Outdoor_df['TIME_STAMP'] = Outdoor_df['TIME_STAMP'].dt.round('60min')
-    Indoor_df['TIME_STAMP'] = Indoor_df['TIME_STAMP'].dt.round('60min')
-
-    # Deleting the wrong input at the first rows
-    Outdoor_df = Outdoor_df.iloc[1:]
-    Indoor_df = Indoor_df.iloc[1:]
-
-    # converting temperature from C to f
+    Outdoor_df = Outdoor_df.groupby(['TIME_STAMP'], as_index=False)["TEMPERATURE","GAS","HUMIDITY", "PRESSURE", "ALTITUDE"].mean()
+    Outdoor_df = Outdoor_df.loc[:,["TIME_STAMP", "TEMPERATURE", "GAS", "HUMIDITY", "PRESSURE"]]
+    Outdoor_df["GAS"] = round(Outdoor_df["GAS"],1)
+    Outdoor_df["HUMIDITY"] = round(Outdoor_df["HUMIDITY"],1)
+    Outdoor_df["TEMPERATURE"] = round(Outdoor_df["TEMPERATURE"],1)
+    Outdoor_df["PRESSURE"] = round(Outdoor_df["PRESSURE"],1)
     Outdoor_df['TEMPERATURE'] = round((Outdoor_df['TEMPERATURE']* 9/5) + 32)
+
+    # Cleaning up Indoor Data
+    Indoor_df['TIME_STAMP'] = pd.to_datetime(Indoor_df['TIME_STAMP'])
+    Indoor_df['TIME_STAMP'] = Indoor_df['TIME_STAMP'].dt.round('60min')
+    Indoor_df = Indoor_df.groupby(['TIME_STAMP'], as_index=False)["TEMPERATURE","GAS","HUMIDITY", "PRESSURE", "ALTITUDE"].mean()
+    Indoor_df = Indoor_df.loc[:,["TIME_STAMP", "TEMPERATURE", "GAS", "HUMIDITY", "PRESSURE"]]
+    Indoor_df["GAS"] = round(Indoor_df["GAS"],1)
+    Indoor_df["HUMIDITY"] = round(Outdoor_df["HUMIDITY"],1)
+    Indoor_df["TEMPERATURE"] = round(Indoor_df["TEMPERATURE"],1)
+    Indoor_df["PRESSURE"] = round(Indoor_df["PRESSURE"],1)
     Indoor_df['TEMPERATURE'] = round((Indoor_df['TEMPERATURE']* 9/5) + 32)
 
     # Merging Indor and Outdoor (on time stamp)
     master_df = pd.merge(Outdoor_df, Indoor_df, on = "TIME_STAMP", how = "left", suffixes=("_Out","_In"))
-    master_df= master_df.dropna()
+    master_df = master_df.dropna()
 
     # Creating indoor and Outdoor Datasets
     outdoor = master_df.loc[:,["TIME_STAMP", "TEMPERATURE_Out"]]
     indoor = master_df.loc[:,["TIME_STAMP", "TEMPERATURE_In"]]
     outdoor.columns = ['ds', 'y']
     indoor.columns = ['ds', 'y']
-
-    # Grouping by Hour
-    outdoor = outdoor.groupby(['ds'], as_index=False).y.mean()
-    indoor = indoor.groupby(['ds'], as_index=False).y.mean()
 
     # Building the model for inodor and outdoor
     od = Prophet()
@@ -88,8 +101,6 @@ def analysis():
     ind_forecast = ind.predict(ind_future)
     ind_df = ind_forecast.to_dict(orient='records')
     return jsonify(ind_df)
-
-
 
 if __name__ == '__main__':
     app.run(debug=True)
